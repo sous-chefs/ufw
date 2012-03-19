@@ -94,6 +94,7 @@ The items in the data bag will contain a 'rules' array of hashes to apply to the
 
     % knife data bag create firewall
     % knife data bag from file firewall examples/data_bags/firewall/apache2.json
+    % knife data bag from file firewall examples/data_bags/firewall/apache2__mod_ssl.json
 
 # Example 'firewall' data bag item
 
