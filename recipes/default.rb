@@ -31,7 +31,7 @@ if old_state == new_state
   Chef::Log.info "Firewall rules unchanged."
 else
   Chef::Log.info "Firewall rules updated."
-  node['firewall']['state'] = new_state
+  node.set['firewall']['state'] = new_state
 
   #drop rules and re-enable
   execute "ufw --force reset"
