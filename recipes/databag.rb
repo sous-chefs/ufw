@@ -50,7 +50,7 @@ rlist.each do |entry|
     #add the list of firewall rules to the current list
     item = data_bag_item('firewall', entry)
     rules = item['rules']
-    node['firewall']['rules'].concat(rules) unless rules.nil?
+    node.set['firewall']['rules'].concat(rules) unless rules.nil?
   end
 end
 
