@@ -44,6 +44,8 @@ Chef::Log.debug "ufw::databag:rlist: #{rlist}"
 fw_db = data_bag('firewall')
 Chef::Log.debug "ufw::databag:firewall:#{fw_db}"
 
+node.set['firewall']['rules'] = [] unless node.set['firewall']['rules'].respond_to? :concat
+
 rlist.each do |entry|
   Chef::Log.debug "ufw::databag: \"#{entry}\""
   if fw_db.member?(entry)
