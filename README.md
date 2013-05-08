@@ -108,6 +108,10 @@ The items in the data bag will contain a 'rules' array of hashes to apply to the
                 "port": "80",
                 "source": "192.168.1.0/24",
                 "action": "deny"
+            }},
+            {"permit MoSH UDP Ports": {
+                "protocol": "udp",
+                "port_range": "60000:61000"
             }}
         ]
     }
