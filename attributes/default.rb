@@ -1,2 +1,2 @@
-default[:firewall][:rules] = []
-default[:firewall][:securitylevel] = ""
+default['firewall']['rules'] = []
+default['firewall']['securitylevel'] = ""
