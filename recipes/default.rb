@@ -21,7 +21,7 @@
 package "ufw"
 
 old_state = node['firewall']['state']
-new_state = node['firewall']['rules'].to_s
+new_state = node.set['firewall']['rules'].to_s
 Chef::Log.debug "Old firewall state:#{old_state}"
 Chef::Log.debug "New firewall state:#{new_state}"
 
@@ -46,7 +46,7 @@ else
     action :allow
   end
 
-  node['firewall']['rules'].each do |rule_mash|
+  node.set['firewall']['rules'].each do |rule_mash|
     Chef::Log.debug "ufw:rule \"#{rule_mash}\""
     rule_mash.keys.each do |rule|
       Chef::Log.debug "ufw:rule:name \"#{rule}\""
