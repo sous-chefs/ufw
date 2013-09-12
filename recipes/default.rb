@@ -40,12 +40,6 @@ else
     action :enable
   end
 
-  #leave this on by default
-  firewall_rule "ssh" do
-    port 22
-    action :allow
-  end
-
   node['firewall']['rules'].each do |rule_mash|
     Chef::Log.debug "ufw:rule \"#{rule_mash}\""
     rule_mash.keys.each do |rule|
