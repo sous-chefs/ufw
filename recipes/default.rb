@@ -76,7 +76,4 @@ else
     end
   end
 
-  # Set default policy for output to DROP
-  execute "ufw default deny output"
-
 end
