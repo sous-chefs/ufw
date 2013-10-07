@@ -76,6 +76,10 @@ else
         destination params['destination'] if params['destination']
         dest_port params['dest_port'].to_i if params['dest_port']
         position params['position'].to_i if params['position']
+        if params['port_range']
+          start, finish = params['port_range'].split(":")
+          port_range (start.to_i)..(finish.to_i)
+        end
         action act
       end
     end
