@@ -73,7 +73,7 @@ else
         interface params['interface'] if params['interface']
         logging params['logging'].to_sym if params['logging']
         port params['port'].to_i if params['port']
-        port_range params['port_range'].split('..').inject { |s,e| s.to_i..e.to_i }
+        port_range params['port_range'].split('..').inject { |s,e| s.to_i..e.to_i } if params['port_range']
         source params['source'] if params['source']
         destination params['destination'] if params['destination']
         dest_port params['dest_port'].to_i if params['dest_port']
