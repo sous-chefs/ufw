@@ -58,6 +58,7 @@ else
       Chef::Log.debug "ufw:rule:interface #{params['interface']}" if params['interface']
       Chef::Log.debug "ufw:rule:logging #{params['logging']}" if params['logging']
       Chef::Log.debug "ufw:rule:port #{params['port']}" if params['port']
+      Chef::Log.debug "ufw:rule:port_range #{params['port_range']}" if params['port_range']
       Chef::Log.debug "ufw:rule:source #{params['source']}" if params['source']
       Chef::Log.debug "ufw:rule:destination #{params['destination']}" if params['destination']
       Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
@@ -72,6 +73,7 @@ else
         interface params['interface'] if params['interface']
         logging params['logging'].to_sym if params['logging']
         port params['port'].to_i if params['port']
+        port_range params['port_range'].split('..').inject { |s,e| s.to_i..e.to_i }
         source params['source'] if params['source']
         destination params['destination'] if params['destination']
         dest_port params['dest_port'].to_i if params['dest_port']
