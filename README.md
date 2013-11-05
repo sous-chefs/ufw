@@ -84,6 +84,12 @@ Roles and the node may have the `['firewall']['rules']` attribute set. This attr
               "destination" => "1.2.3.5",
               "dest_port" => "5469"
             }
+          },
+          {"allow to tcp ports 8000-8010 from 192.168.1.0/24" => {
+              "port_range" => "8000..8010",
+              "source" => "192.168.1.0/24",
+              "protocol" => "tcp" //protocol is mandatory when using port ranges
+            }
           }
         ]
       }
