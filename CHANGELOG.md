@@ -3,6 +3,11 @@ ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
 
+v0.7.4
+------
+No change. Version bump for toolchain
+
+
 v0.7.2
 ------
 Updating metadata to depend on firewall >= 0.9
