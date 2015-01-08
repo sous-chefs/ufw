@@ -20,6 +20,12 @@
 
 package "ufw"
 
+service "ufw" do
+  supports :status => true, :restart => true, :reload => false
+end
+
+include_recipe "ufw::configure"
+
 old_state = node['firewall']['state']
 new_state = node['firewall']['rules'].to_s
 Chef::Log.debug "Old firewall state:#{old_state}"

@@ -14,6 +14,8 @@ default
 -------
 The `default` recipe looks for the list of firewall rules to apply from the `['firewall']['rules']` attribute added to roles and on the node itself. The list of rules is then applied to the node in the order specified.
 
+The `default` recipe also applies any `['firewall']['configuration']` values to /etc/default/ufw.
+
 disable
 -------
 The `disable` recipe is used if there is a need to disable the existing firewall, perhaps for testing. It disables the ufw firewall even if other ufw recipes attempt to enable it.
@@ -92,6 +94,20 @@ Roles and the node may have the `['firewall']['rules']` attribute set. This attr
             }
           }
         ]
+      }
+      )
+
+Roles and the node may have the `['firewall']['configuration']` attribute set. This attribute is a hash, and each key-value pair will be assigned in /etc/default/ufw. For example:
+
+    name "fw_configuration_example"
+    description "Firewall confirutation for Examples"
+    override_attributes(
+      "firewall" => {
+        "configuration" => {
+          'IPV6' => 'no',
+          'DEFAULT_FORWARD_POLICY' => 'ACCEPT',
+          'SOME_ARBITRARY_SETTING' => 'ARBITRARY_VALUE',
+        }
       }
       )
 
