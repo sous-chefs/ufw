@@ -32,6 +32,7 @@ recipes
 -------
 The `recipes` recipe applies firewall rules based on inspecting the runlist for recipes that have node[<recipe>]['firewall']['rules'] attributes. These are appended to node['firewall']['rules'] and applied to the node. Cookbooks may define attributes for recipes like so:
 
+```ruby
 # attributes/default.rb for test cookbook
     default['test']['firewall']['rules'] = [
       {"test"=> {
@@ -51,6 +52,7 @@ The `recipes` recipe applies firewall rules based on inspecting the runlist for 
          }
        }
     ]
+```
 
 Note that the 'test::awesome' rules are only applied if that specific recipe is in the runlist. Recipe-applied firewall rules are applied after any rules defined in role attributes.
 
@@ -63,6 +65,7 @@ Attributes
 Roles and the node may have the `['firewall']['rules']` attribute set. This attribute is a list of hashes, the key will be rule name, the value will be the hash of parameters. Application order is based on run list.
 
 # Example Role
+```ruby
     name "fw_example"
     description "Firewall rules for Examples"
     override_attributes(
@@ -96,9 +99,11 @@ Roles and the node may have the `['firewall']['rules']` attribute set. This attr
         ]
       }
       )
+```
 
 Roles and the node may have the `['firewall']['configuration']` attribute set. This attribute is a hash, and each key-value pair will be assigned in /etc/default/ufw. For example:
 
+```ruby
     name "fw_configuration_example"
     description "Firewall confirutation for Examples"
     override_attributes(
@@ -110,6 +115,7 @@ Roles and the node may have the `['firewall']['configuration']` attribute set. T
         }
       }
       )
+```
 
 Data Bags
 =========
@@ -123,6 +129,7 @@ The items in the data bag will contain a 'rules' array of hashes to apply to the
 
 # Example 'firewall' data bag item
 
+```json
     {
         "id": "apache2",
         "rules": [
@@ -136,6 +143,7 @@ The items in the data bag will contain a 'rules' array of hashes to apply to the
             }}
         ]
     }
+```
 
 Resources/Providers
 ===================
