@@ -22,14 +22,16 @@ node['firewall']['configuration'].each_pair do |key,value|
 
   bash "Assign ufw configuration value" do
     code <<-EOH
-      if [ -n "`grep '#{key}=' #{node['firewall']['configuration_file']}`" ]; then
-        sed -i '/#{key}=/ s|=.*$|="#{value}"|' #{node['firewall']['configuration_file']}
+      if [ -n "`egrep '^[[:space:]]*#{key}=' #{node['firewall']['configuration_file']}`" ]; then
+        sed -i '/^[[:space:]]*#{key}=/ s|=.*$|="#{value}"|' #{node['firewall']['configuration_file']}
       else
-        echo "#{key}=#{value}" >> #{node['firewall']['configuration_file']}
+        echo '#{key}="#{value}"' >> #{node['firewall']['configuration_file']}
       fi
     EOH
     notifies :restart, 'service[ufw]', :delayed
-  end
+    not_if "egrep \"^[[:space:]]*#{key}=['\\\"]{,1}#{value}['\\\"]{,1}\" #{node['firewall']['configuration_file']}"
+
+  end unless key.nil? || key == ''
 
 end
 
