@@ -21,7 +21,7 @@ v0.7.0
 v0.6.4
 ------
 ### Bug
-- **[COOK-3316](https://tickets.opscode.com/browse/COOK-3316)** - Fix README.md example
+- **[COOK-3316](https://tickets.chef.io/browse/COOK-3316)** - Fix README.md example
 
 v0.6.2
 ------
