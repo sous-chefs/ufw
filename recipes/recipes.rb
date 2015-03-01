@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+node.override['firewall']['rules'] = [] unless node['firewall']['rules'].respond_to? :concat
+
 # expand and parse the node's runlist for recipes and find attributes of the form node[<recipe>]['firewall']['rules']
 # append them to the node['firewall']['rules'] array attribute
 node.expand!.recipes.each do |recipe|
@@ -27,13 +29,13 @@ node.expand!.recipes.each do |recipe|
   if recipe != cookbook and node[cookbook] and node[cookbook]['firewall'] and node[cookbook]['firewall']['rules']
     rules = node[cookbook]['firewall']['rules']
     Chef::Log.debug "ufw::recipes:#{cookbook}:rules #{rules}"
-    node.set['firewall']['rules'].concat(rules) unless rules.nil?
+    node.override['firewall']['rules'] = node['firewall']['rules'].concat(rules) unless rules.nil?
   end
   #get the recipe attributes if there are any
   if node[recipe] and node[recipe]['firewall'] and node[recipe]['firewall']['rules']
     rules = node[recipe]['firewall']['rules']
     Chef::Log.debug "ufw::recipes:#{recipe}:rules #{rules}"
-    node.set['firewall']['rules'].concat(rules) unless rules.nil?
+    node.override['firewall']['rules'] = node['firewall']['rules'].concat(rules) unless rules.nil?
   end
 end
 
