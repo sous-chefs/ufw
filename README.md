@@ -14,6 +14,10 @@ default
 -------
 The `default` recipe looks for the list of firewall rules to apply from the `['firewall']['rules']` attribute added to roles and on the node itself. The list of rules is then applied to the node in the order specified.
 
+By default this includes a rule to allow SSH from any. This can be disabled using:
+
+`default['firewall']['default_ssh_rule'] = false`
+
 disable
 -------
 The `disable` recipe is used if there is a need to disable the existing firewall, perhaps for testing. It disables the ufw firewall even if other ufw recipes attempt to enable it.
