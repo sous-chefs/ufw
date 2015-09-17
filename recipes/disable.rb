@@ -18,6 +18,6 @@
 # limitations under the License.
 #
 
-firewall "ufw" do
+firewall 'ufw' do
   action :disable
 end

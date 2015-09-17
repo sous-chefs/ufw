@@ -22,20 +22,20 @@ securitylevel = node['firewall']['securitylevel']
 
 Chef::Log.info "ufw::securitylevel:#{securitylevel}"
 
-#verify that only 1 "color" security group is applied"
-count = node.expand!.roles.count {|role| role =~ /SecurityLevel-(Red|Green|Yellow)/ }
+# verify that only 1 "color" security group is applied"
+count = node.expand!.roles.count { |role| role =~ /SecurityLevel-(Red|Green|Yellow)/ }
 if count > 1
-  raise Chef::Exceptions::AmbiguousRunlistSpecification, "conflicting SecurityLevel-'color' roles, only 1 may be applied."
+  fail Chef::Exceptions::AmbiguousRunlistSpecification, "conflicting SecurityLevel-'color' roles, only 1 may be applied."
 end
 
 case securitylevel
 when 'red'
-  #put special stuff for red here
+  # put special stuff for red here
 when 'yellow'
-  #put special stuff for red here
+  # put special stuff for red here
 when 'green'
-  #put special stuff for red here
+  # put special stuff for red here
 end
 
-#now go apply the rules
-include_recipe "ufw::default"
+# now go apply the rules
+include_recipe 'ufw::default'

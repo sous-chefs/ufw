@@ -23,19 +23,19 @@
 node.expand!.recipes.each do |recipe|
   Chef::Log.debug "ufw::recipes: #{recipe}"
   cookbook = recipe.split('::')[0]
-  #get the cookbook attributes if there are any
-  if recipe != cookbook and node[cookbook] and node[cookbook]['firewall'] and node[cookbook]['firewall']['rules']
+  # get the cookbook attributes if there are any
+  if recipe != cookbook && node[cookbook] && node[cookbook]['firewall'] && node[cookbook]['firewall']['rules']
     rules = node[cookbook]['firewall']['rules']
     Chef::Log.debug "ufw::recipes:#{cookbook}:rules #{rules}"
     node.set['firewall']['rules'].concat(rules) unless rules.nil?
   end
-  #get the recipe attributes if there are any
-  if node[recipe] and node[recipe]['firewall'] and node[recipe]['firewall']['rules']
+  # get the recipe attributes if there are any
+  if node[recipe] && node[recipe]['firewall'] && node[recipe]['firewall']['rules']
     rules = node[recipe]['firewall']['rules']
     Chef::Log.debug "ufw::recipes:#{recipe}:rules #{rules}"
     node.set['firewall']['rules'].concat(rules) unless rules.nil?
   end
 end
 
-#now go apply the rules
-include_recipe "ufw::default"
+# now go apply the rules
+include_recipe 'ufw::default'

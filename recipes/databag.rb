@@ -18,12 +18,12 @@
 # limitations under the License.
 #
 
-#flatten the run_list to just the names of the roles and recipes in order
+# flatten the run_list to just the names of the roles and recipes in order
 def run_list_names(run_list)
   names = []
   run_list.each do |entry|
     Chef::Log.debug "ufw::databag:run_list_names+name: #{entry.name}"
-    if entry.name.index('::') #cookbook::recipe
+    if entry.name.index('::') # cookbook::recipe
       names.push(entry.name.sub('::', '__'))
     else
       names.push(entry.name)
@@ -34,7 +34,7 @@ def run_list_names(run_list)
     end
   end
   Chef::Log.debug "ufw::databag:run_list_names+names: #{names}"
-  return names
+  names
 end
 
 rlist = run_list_names(node.run_list)
@@ -47,12 +47,12 @@ Chef::Log.debug "ufw::databag:firewall:#{fw_db}"
 rlist.each do |entry|
   Chef::Log.debug "ufw::databag: \"#{entry}\""
   if fw_db.member?(entry)
-    #add the list of firewall rules to the current list
+    # add the list of firewall rules to the current list
     item = data_bag_item('firewall', entry)
     rules = item['rules']
     node.set['firewall']['rules'].concat(rules) unless rules.nil?
   end
 end
 
-#now go apply the rules
-include_recipe "ufw::default"
+# now go apply the rules
+include_recipe 'ufw::default'

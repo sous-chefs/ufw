@@ -18,30 +18,30 @@
 # limitations under the License.
 #
 
-package "ufw"
+package 'ufw'
 
 old_state = node['firewall']['state']
 new_state = node['firewall']['rules'].to_s
 Chef::Log.debug "Old firewall state:#{old_state}"
 Chef::Log.debug "New firewall state:#{new_state}"
 
-#check to see if the firewall rules changed.
-#the rules are always changed the first run
+# check to see if the firewall rules changed.
+# the rules are always changed the first run
 if old_state == new_state
-  Chef::Log.info "Firewall rules unchanged."
+  Chef::Log.info 'Firewall rules unchanged.'
 else
-  Chef::Log.info "Firewall rules updated."
+  Chef::Log.info 'Firewall rules updated.'
   node.set['firewall']['state'] = new_state
 
-  #drop rules and re-enable
-  execute "ufw --force reset"
+  # drop rules and re-enable
+  execute 'ufw --force reset'
 
-  firewall "ufw" do
+  firewall 'ufw' do
     action :enable
   end
 
-  #leave this on by default
-  firewall_rule "ssh" do
+  # leave this on by default
+  firewall_rule 'ssh' do
     port 22
     action :allow
   end
@@ -64,8 +64,8 @@ else
       Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
       Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
       act = params['action']
-      act ||= "allow"
-      raise "ufw: port_range was specified to firewall_rule without protocol" if params['port_range'] && !params['protocol']
+      act ||= 'allow'
+      fail 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
       Chef::Log.debug "ufw:rule:action :#{act}"
       firewall_rule rule do
         name params['name'] if params['name']
@@ -74,10 +74,10 @@ else
         interface params['interface'] if params['interface']
         logging params['logging'].to_sym if params['logging']
         port params['port'].to_i if params['port']
-	if params['port_range']
-	  ends = params['port_range'].split('..').map{|d| Integer(d)}
-	  port_range ends[0]..ends[1]
-	end
+        if params['port_range']
+          ends = params['port_range'].split('..').map { |d| Integer(d) }
+          port_range ends[0]..ends[1]
+        end
         source params['source'] if params['source']
         destination params['destination'] if params['destination']
         dest_port params['dest_port'].to_i if params['dest_port']

@@ -1,7 +1,7 @@
-name "securitylevel_red"
+name 'securitylevel_red'
 description "Security level 'red'"
 override_attributes(
-  "firewall" => {
-    "securitylevel" => "red"
+  'firewall' => {
+    'securitylevel' => 'red'
   }
-  )
+)
