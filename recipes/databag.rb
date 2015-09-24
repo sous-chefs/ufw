@@ -46,12 +46,12 @@ Chef::Log.debug "ufw::databag:firewall:#{fw_db}"
 
 rlist.each do |entry|
   Chef::Log.debug "ufw::databag: \"#{entry}\""
-  if fw_db.member?(entry)
-    # add the list of firewall rules to the current list
-    item = data_bag_item('firewall', entry)
-    rules = item['rules']
-    node.set['firewall']['rules'].concat(rules) unless rules.nil?
-  end
+  next unless fw_db.member?(entry)
+
+  # add the list of firewall rules to the current list
+  item = data_bag_item('firewall', entry)
+  rules = item['rules']
+  node.set['firewall']['rules'].concat(rules) unless rules.nil?
 end
 
 # now go apply the rules
