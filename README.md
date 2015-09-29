@@ -41,7 +41,7 @@ The `databag` recipe calls the `default` recipe after the `['firewall']['rules']
 ###recipes
 The `recipes` recipe applies firewall rules based on inspecting the runlist for recipes that have node[<recipe>]['firewall']['rules'] attributes. These are appended to node['firewall']['rules'] and applied to the node. Cookbooks may define attributes for recipes like so:
 
-# attributes/default.rb for test cookbook
+#### attributes/default.rb for test cookbook
     default['test']['firewall']['rules'] = [
       {"test"=> {
           "port"=> "27901",
@@ -70,7 +70,7 @@ Attributes
 ----------
 Roles and the node may have the `['firewall']['rules']` attribute set. This attribute is a list of hashes, the key will be rule name, the value will be the hash of parameters. Application order is based on run list.
 
-# Example Role
+#### Example Role
     name "fw_example"
     description "Firewall rules for Examples"
     override_attributes(
@@ -115,7 +115,7 @@ The items in the data bag will contain a 'rules' array of hashes to apply to the
     % knife data bag from file firewall examples/data_bags/firewall/apache2.json
     % knife data bag from file firewall examples/data_bags/firewall/apache2__mod_ssl.json
 
-# Example 'firewall' data bag item
+##### Example 'firewall' data bag item
 
     {
         "id": "apache2",
