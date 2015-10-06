@@ -37,13 +37,13 @@ else
   execute 'ufw --force reset'
 
   firewall 'ufw' do
-    action :enable
+    action :install
   end
 
   # leave this on by default
   firewall_rule 'ssh' do
     port 22
-    action :allow
+    action :create
   end
 
   node['firewall']['rules'].each do |rule_mash|
