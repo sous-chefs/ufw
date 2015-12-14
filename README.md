@@ -18,17 +18,25 @@ Since this cookbook has an open-ended dependency on 'firewall', users of Chef11 
 - none
 
 ## Recipes
-###default The `default` recipe looks for the list of firewall rules to apply from the `['firewall']['rules']` attribute added to roles and on the node itself. The list of rules is then applied to the node in the order specified.
+###default
 
-###disable The `disable` recipe is used if there is a need to disable the existing firewall, perhaps for testing. It disables the ufw firewall even if other ufw recipes attempt to enable it.
+The `default` recipe looks for the list of firewall rules to apply from the `['firewall']['rules']` attribute added to roles and on the node itself. The list of rules is then applied to the node in the order specified.
+
+###disable
+
+The `disable` recipe is used if there is a need to disable the existing firewall, perhaps for testing. It disables the ufw firewall even if other ufw recipes attempt to enable it.
 
 If you remove this recipe, the firewall does not get automatically re-enabled. You will need clear the value of the `['firewall']['state']` to force a recalculation of the firewall rules. This can be done with `knife node edit`.
 
-###databag The `databag` recipe looks in the `firewall` data bag for to apply firewall rules based on inspecting the runlist for roles and recipe names for keys that map to the data bag items and are applied in the the order specified.
+###databag
+
+The `databag` recipe looks in the `firewall` data bag for to apply firewall rules based on inspecting the runlist for roles and recipe names for keys that map to the data bag items and are applied in the the order specified.
 
 The `databag` recipe calls the `default` recipe after the `['firewall']['rules']` attribute is set to appy the rules, so you may mix roles with databag items if you want (roles apply first, then data bag contents).
 
-###recipes The `recipes` recipe applies firewall rules based on inspecting the runlist for recipes that have node[<recipe>]['firewall']['rules'] attributes. These are appended to node['firewall']['rules'] and applied to the node. Cookbooks may define attributes for recipes like so:
+###recipes
+
+The `recipes` recipe applies firewall rules based on inspecting the runlist for recipes that have node[<recipe>]['firewall']['rules'] attributes. These are appended to node['firewall']['rules'] and applied to the node. Cookbooks may define attributes for recipes like so:
 
 ### attributes/default.rb for test cookbook
 
@@ -55,7 +63,9 @@ default['test::awesome']['firewall']['rules'] = [
 
 Note that the 'test::awesome' rules are only applied if that specific recipe is in the runlist. Recipe-applied firewall rules are applied after any rules defined in role attributes.
 
-###securitylevel The `securitylevel` recipe is used if there are any node['firewall']['securitylevel'] settings that need to be enforced. It is a reference implementation with nothing configured.
+###
+
+securitylevel The `securitylevel` recipe is used if there are any node['firewall']['securitylevel'] settings that need to be enforced. It is a reference implementation with nothing configured.
 
 ## Attributes
 Roles and the node may have the `['firewall']['rules']` attribute set. This attribute is a list of hashes, the key will be rule name, the value will be the hash of parameters. Application order is based on run list.
