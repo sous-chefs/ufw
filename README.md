@@ -10,7 +10,7 @@ Rules may be added to the node by adding them to the `['firewall']['rules']` att
 - Ubuntu
 
 ### Chef
-- Chef 11+
+- Chef 12+
 
 Since this cookbook has an open-ended dependency on 'firewall', users of Chef11 or earlier should pin 'firewall' to '~>0.9' via the caller's metadata. Otherwise 'poise' v2+ will be invoked which is Chef12+ only.
 
