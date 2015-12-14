@@ -3,7 +3,7 @@
 # Cookbook Name:: ufw
 # Recipe:: default
 #
-# Copyright 2011, Chef Software, Inc
+# Copyright 2011-2015, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,13 +37,13 @@ else
   execute 'ufw --force reset'
 
   firewall 'ufw' do
-    action :enable
+    action :install
   end
 
   # leave this on by default
   firewall_rule 'ssh' do
     port 22
-    action :allow
+    action :create
   end
 
   node['firewall']['rules'].each do |rule_mash|
@@ -64,7 +64,7 @@ else
       Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
       Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
       act = params['action']
-      act ||= 'allow'
+      act ||= 'create'
       fail 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
       Chef::Log.debug "ufw:rule:action :#{act}"
       firewall_rule rule do
