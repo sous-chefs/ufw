@@ -25,7 +25,7 @@ Chef::Log.info "ufw::securitylevel:#{securitylevel}"
 # verify that only 1 "color" security group is applied"
 count = node.expand!.roles.count { |role| role =~ /SecurityLevel-(Red|Green|Yellow)/ }
 if count > 1
-  fail Chef::Exceptions::AmbiguousRunlistSpecification, "conflicting SecurityLevel-'color' roles, only 1 may be applied."
+  raise Chef::Exceptions::AmbiguousRunlistSpecification, "conflicting SecurityLevel-'color' roles, only 1 may be applied."
 end
 
 case securitylevel

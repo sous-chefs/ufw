@@ -65,7 +65,7 @@ else
       Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
       act = params['action']
       act ||= 'create'
-      fail 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
+      raise 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
       Chef::Log.debug "ufw:rule:action :#{act}"
       firewall_rule rule do
         name params['name'] if params['name']
