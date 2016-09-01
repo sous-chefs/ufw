@@ -9,14 +9,7 @@ depends          'firewall', '>= 2.0'
 
 supports 'ubuntu'
 
-source_url 'https://github.com/chef-cookbooks/ufw' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/ufw/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/ufw'
+issues_url 'https://github.com/chef-cookbooks/ufw/issues'
 
-attribute 'firewall/rules',
-  display_name: 'List of firewall rules for the node.',
-  description: 'List of firewall rules for the node. Possibly set by node, roles or data bags.',
-  type: 'array'
-
-attribute 'firewall/securitylevel',
-  display_name: 'Security level of the node.',
-  description: 'Security level of the node, may be set by node, roles or environment.'
+chef_version '>= 12' if respond_to?(:chef_version)
