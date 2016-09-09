@@ -14,7 +14,7 @@ Rules may be added to the node by adding them to the `['firewall']['rules']` att
 
 ### Chef
 
-- Chef 12+
+- Chef 12.1+
 
 ### Cookbooks
 
