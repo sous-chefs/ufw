@@ -1,6 +1,12 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## 2.0.0 (2016-11-25)
+- Add chef_version metadata + remove chef 11 compat
+- Replace node.set with node.normal
+- Require Chef 12.1
+- Fix the recipe to properly converge
+
 ## v1.0.0 (12-14-2015)
 - Update to use / require the Firewall v2.0.0+ cookbook, which requires Chef 12
 - Updated all Opscode references to Chef Software Inc.
