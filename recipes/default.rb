@@ -36,7 +36,8 @@ else
   # drop rules and re-enable
   execute 'ufw --force reset'
 
-  firewall 'ufw' do
+  firewall 'default' do
+    provider Chef::Provider::FirewallUfw
     action :install
   end
 
