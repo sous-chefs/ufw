@@ -45,6 +45,7 @@ else
   firewall_rule 'ssh' do
     port 22
     action :create
+    only_if {node['firewall']['default_ssh']}
   end
 
   node['firewall']['rules'].each do |rule_mash|
