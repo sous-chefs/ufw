@@ -4,9 +4,9 @@ override_attributes(
   'firewall' => {
     'rules' => [
       { 'https' => {
-        'port' => '443'
-      }
-      }
-    ]
+        'port' => '443',
+      },
+      },
+    ],
   }
 )
