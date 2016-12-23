@@ -28,14 +28,14 @@ if count > 1
   raise Chef::Exceptions::AmbiguousRunlistSpecification, "conflicting SecurityLevel-'color' roles, only 1 may be applied."
 end
 
-case securitylevel
-when 'red'
-  # put special stuff for red here
-when 'yellow'
-  # put special stuff for red here
-when 'green'
-  # put special stuff for red here
-end
+# case securitylevel
+# when 'red'
+#   # put special stuff for red here
+# when 'yellow'
+#   # put special stuff for red here
+# when 'green'
+#   # put special stuff for red here
+# end
 
 # now go apply the rules
 include_recipe 'ufw::default'
