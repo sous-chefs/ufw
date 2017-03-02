@@ -1,6 +1,12 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## 3.0.0 (2017-03-01)
+- Require Chef 12.4 (Depends on firewall which requires Chef 12.4+ at this point)
+- Update default to remove installation of ufw which is duplication from firewall cookbook, and remove state changes
+  - Due to the change in default recipe, bumping major version in case this is breaking change for some.
+- Added debian platform as firewall cookbook supports ufw on debian
+
 ## 2.0.0 (2016-11-25)
 - Add chef_version metadata + remove chef 11 compat
 - Replace node.set with node.normal
