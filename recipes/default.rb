@@ -20,72 +20,50 @@
 
 package 'ufw'
 
-old_state = node['firewall']['state']
-new_state = node['firewall']['rules'].to_s
-Chef::Log.debug "Old firewall state:#{old_state}"
-Chef::Log.debug "New firewall state:#{new_state}"
+firewall 'default' do
+  provider Chef::Provider::FirewallUfw
+  action :install
+end
 
-# check to see if the firewall rules changed.
-# the rules are always changed the first run
-if old_state == new_state
-  Chef::Log.info 'Firewall rules unchanged.'
-else
-  Chef::Log.info 'Firewall rules updated.'
-  node.normal['firewall']['state'] = new_state
-
-  # drop rules and re-enable
-  execute 'ufw --force reset'
-
-  firewall 'default' do
-    provider Chef::Provider::FirewallUfw
-    action :install
-  end
-
-  # leave this on by default
-  firewall_rule 'ssh' do
-    port 22
-    action :create
-  end
-
-  node['firewall']['rules'].each do |rule_mash|
-    Chef::Log.debug "ufw:rule \"#{rule_mash}\""
-    rule_mash.keys.each do |rule|
-      Chef::Log.debug "ufw:rule:name \"#{rule}\""
-      params = rule_mash[rule]
-      Chef::Log.debug "ufw:rule:parameters \"#{params}\""
-      Chef::Log.debug "ufw:rule:name #{params['name']}" if params['name']
-      Chef::Log.debug "ufw:rule:protocol #{params['protocol']}" if params['protocol']
-      Chef::Log.debug "ufw:rule:direction #{params['direction']}" if params['direction']
-      Chef::Log.debug "ufw:rule:interface #{params['interface']}" if params['interface']
-      Chef::Log.debug "ufw:rule:logging #{params['logging']}" if params['logging']
-      Chef::Log.debug "ufw:rule:port #{params['port']}" if params['port']
-      Chef::Log.debug "ufw:rule:port_range #{params['port_range']}" if params['port_range']
-      Chef::Log.debug "ufw:rule:source #{params['source']}" if params['source']
-      Chef::Log.debug "ufw:rule:destination #{params['destination']}" if params['destination']
-      Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
-      Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
-      act = params['action']
-      act ||= 'create'
-      raise 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
-      Chef::Log.debug "ufw:rule:action :#{act}"
-      firewall_rule rule do
-        name params['name'] if params['name']
-        protocol params['protocol'].to_sym if params['protocol']
-        direction params['direction'].to_sym if params['direction']
-        interface params['interface'] if params['interface']
-        logging params['logging'].to_sym if params['logging']
-        port params['port'].to_i if params['port']
-        if params['port_range']
-          ends = params['port_range'].split('..').map { |d| Integer(d) }
-          port_range ends[0]..ends[1]
-        end
-        source params['source'] if params['source']
-        destination params['destination'] if params['destination']
-        dest_port params['dest_port'].to_i if params['dest_port']
-        position params['position'].to_i if params['position']
-        action act
+node['firewall']['rules'].each do |rule_mash|
+  Chef::Log.debug "ufw:rule \"#{rule_mash}\""
+  rule_mash.keys.each do |rule|
+    Chef::Log.debug "ufw:rule:name \"#{rule}\""
+    params = rule_mash[rule]
+    Chef::Log.debug "ufw:rule:parameters \"#{params}\""
+    Chef::Log.debug "ufw:rule:name #{params['name']}" if params['name']
+    Chef::Log.debug "ufw:rule:protocol #{params['protocol']}" if params['protocol']
+    Chef::Log.debug "ufw:rule:direction #{params['direction']}" if params['direction']
+    Chef::Log.debug "ufw:rule:interface #{params['interface']}" if params['interface']
+    Chef::Log.debug "ufw:rule:logging #{params['logging']}" if params['logging']
+    Chef::Log.debug "ufw:rule:port #{params['port']}" if params['port']
+    Chef::Log.debug "ufw:rule:port_range #{params['port_range']}" if params['port_range']
+    Chef::Log.debug "ufw:rule:source #{params['source']}" if params['source']
+    Chef::Log.debug "ufw:rule:destination #{params['destination']}" if params['destination']
+    Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
+    Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
+    act = params['action']
+    act ||= 'create'
+    raise 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
+    Chef::Log.debug "ufw:rule:action :#{act}"
+    firewall_rule rule do
+      name params['name'] if params['name']
+      protocol params['protocol'].to_sym if params['protocol']
+      direction params['direction'].to_sym if params['direction']
+      interface params['interface'] if params['interface']
+      logging params['logging'].to_sym if params['logging']
+      port params['port'].to_i if params['port']
+      if params['port_range']
+        ends = params['port_range'].split('..').map { |d| Integer(d) }
+        port_range ends[0]..ends[1]
       end
+      source params['source'] if params['source']
+      destination params['destination'] if params['destination']
+      dest_port params['dest_port'].to_i if params['dest_port']
+      position params['position'].to_i if params['position']
+      action act
     end
   end
-
 end
+
+
