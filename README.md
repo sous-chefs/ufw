@@ -116,6 +116,8 @@ override_attributes(
   )
 ```
 
+* default['firewall']['allow_ssh'] Opens port 22 for SSH when set to true. Default set to true.
+
 ## Data Bags
 
 The `firewall` data bag may be used with the `databag` recipe. It will contain items that map to role names (eg. the 'apache' role will map to the 'apache' item in the 'firewall' data bag). Either roles or recipes may be keys (role[webserver] is 'webserver', recipe[apache2] is 'apache2'). If you have recipe-specific firewall rules, you will need to replace the '::' with '**' (double underscores) (eg. recipe[apache2::mod_ssl] is 'apache2**mod_ssl' in the data bag item).
