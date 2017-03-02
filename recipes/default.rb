@@ -22,7 +22,7 @@ firewall 'default' do
   action :install
 end
 
-  # leave this on by default
+# leave this on by default
 firewall_rule 'ssh' do
   port 22
   action :create
