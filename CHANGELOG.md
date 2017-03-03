@@ -1,7 +1,7 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
-## 3.1.0 (2017-03-01)
+## 3.1.0 (2017-03-02)
 - Add use of the default['firewall']['allow_ssh'] attribute in the default recipe. Default for this cookbook is set to true, as the default recipe assumed that ssh would be enabled.
 
 ## 3.0.0 (2017-03-01)
