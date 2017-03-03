@@ -1,6 +1,9 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## 3.1.0 (2017-03-01)
+- Add use of the default['firewall']['allow_ssh'] attribute in the default recipe. Default for this cookbook is set to true, as the default recipe assumed that ssh would be enabled.
+
 ## 3.0.0 (2017-03-01)
 - Require Chef 12.4 (Depends on firewall which requires Chef 12.4+ at this point)
 - Update default to remove installation of ufw which is duplication from firewall cookbook, and remove state changes
