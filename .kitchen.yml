@@ -18,3 +18,6 @@ suites:
   - name: default
     run_list:
       - recipe[ufw::default]
+  - name: fw_example
+    run_list:
+      - recipe[test::default]
