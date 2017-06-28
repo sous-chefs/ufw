@@ -59,7 +59,7 @@ node['firewall']['rules'].each do |rule_mash|
       port params['port'].to_i if params['port']
       if params['port_range']
         ends = params['port_range'].split('..').map { |d| Integer(d) }
-        port_range ends[0]..ends[1]
+        port ends[0]..ends[1]
       end
       source params['source'] if params['source']
       destination params['destination'] if params['destination']
