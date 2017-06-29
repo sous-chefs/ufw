@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+raise 'ufw::databag and ufw::recipes were both found in the run list - only one may be used' if node.recipe?('ufw::recipes')
+
 # flatten the run_list to just the names of the roles and recipes in order
 def run_list_names(run_list)
   names = []
@@ -44,15 +46,16 @@ Chef::Log.debug "ufw::databag:rlist: #{rlist}"
 fw_db = data_bag('firewall')
 Chef::Log.debug "ufw::databag:firewall:#{fw_db}"
 
+desired_rules = []
 rlist.each do |entry|
   Chef::Log.debug "ufw::databag: \"#{entry}\""
   next unless fw_db.member?(entry)
 
-  # add the list of firewall rules to the current list
   item = data_bag_item('firewall', entry)
   rules = item['rules']
-  node.normal['firewall']['rules'].concat(rules) unless rules.nil?
+  desired_rules.concat(rules) unless rules.nil?
 end
+node.normal['firewall']['rules'] = desired_rules.uniq
 
 # now go apply the rules
 include_recipe 'ufw::default'
