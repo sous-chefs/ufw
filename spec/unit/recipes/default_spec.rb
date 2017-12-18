@@ -1,11 +1,25 @@
 require 'spec_helper'
 
 describe 'ufw::default' do
-  let(:chef_run) do
-    ChefSpec::ServerRunner.converge(described_recipe)
+  cached(:chef_run) do
+    ChefSpec::ServerRunner.new do |node, _server|
+      node.normal['firewall']['rules'] = [
+        { 'http'  => { 'port' => '80'  } },
+      ]
+      node.override['firewall']['rules'] = [
+        { 'https' => { 'port' => '443' } },
+      ]
+    end.converge(described_recipe)
   end
 
-  it 'converges successfully' do
-    expect { :chef_run }.to_not raise_error
+  it 'calls firewall rule for each ' do
+    expect(chef_run).to create_firewall_rule('http').with(
+      port: 80,
+      protocol: :tcp
+    )
+    expect(chef_run).to create_firewall_rule('https').with(
+      port: 443,
+      protocol: :tcp
+    )
   end
 end
