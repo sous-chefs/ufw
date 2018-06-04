@@ -47,7 +47,7 @@ node['firewall']['rules'].each do |rule_mash|
     Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
     Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
     act = params['action']
-    act ||= 'create'
+    act ||= 'allow'
     raise 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
     Chef::Log.debug "ufw:rule:action :#{act}"
     firewall_rule rule do
@@ -59,13 +59,13 @@ node['firewall']['rules'].each do |rule_mash|
       port params['port'].to_i if params['port']
       if params['port_range']
         ends = params['port_range'].split('..').map { |d| Integer(d) }
-        port_range ends[0]..ends[1]
+        port ends[0]..ends[1]
       end
       source params['source'] if params['source']
       destination params['destination'] if params['destination']
       dest_port params['dest_port'].to_i if params['dest_port']
       position params['position'].to_i if params['position']
-      action act
+      command act.to_sym
     end
   end
 end
