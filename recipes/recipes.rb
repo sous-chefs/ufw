@@ -34,7 +34,7 @@ node.expand!.recipes.each do |recipe|
 
   rules = node[recipe]['firewall']['rules']
   Chef::Log.debug "ufw::recipes:#{recipe}:rules #{rules}"
-  node.normal['firewall']['rules'].concat(rules) unless rules.nil?
+  node.normal['firewall']['rules'] = node.normal['firewall']['rules'].to_a.concat(rules) unless rules.nil?
 end
 
 # now go apply the rules
