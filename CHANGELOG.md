@@ -1,6 +1,10 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## 3.2.0 (2018-07-24)
+
+- allow rules attribute to be specified as Hash
+
 ## 3.1.1 (2018-01-03)
 
 - Fix failure in recipes recipe from issue #21
