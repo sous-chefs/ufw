@@ -75,6 +75,7 @@ rules.keys.each do |rule|
     destination params['destination'] if params['destination']
     dest_port params['dest_port'].to_i if params['dest_port']
     position params['position'].to_i if params['position']
+    command params['command'].to_sym if params['command']
     action act
   end
 end

@@ -94,7 +94,7 @@ override_attributes(
       {"block tomcat from 192.168.1.0/24" => {
           "port" => "8080",
           "source" => "192.168.1.0/24",
-          "action" => "deny"
+          "command" => "deny"
         }
       },
       {"Allow access to udp 1.2.3.4 port 5469 from 1.2.3.5 port 5469" => {
@@ -142,7 +142,7 @@ The items in the data bag will contain a 'rules' array of hashes to apply to the
         {"block http from 192.168.1.0/24": {
             "port": "80",
             "source": "192.168.1.0/24",
-            "action": "deny"
+            "command": "deny"
         }}
     ]
 }
