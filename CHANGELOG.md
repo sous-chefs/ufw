@@ -1,6 +1,10 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## 3.2.1 (2018-10-04)
+
+- Update README.md formatting
+
 ## 3.2.0 (2018-07-24)
 
 - allow rules attribute to be specified as Hash
