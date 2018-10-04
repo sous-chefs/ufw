@@ -41,9 +41,7 @@ The `databag` recipe calls the `default` recipe after the `['firewall']['rules']
 
 ### recipes
 
-The `recipes` recipe applies firewall rules based on inspecting the runlist for recipes that have node[
-
-<recipe>]['firewall']['rules'] attributes. These are appended to node['firewall']['rules'] and applied to the node. Cookbooks may define attributes for recipes like so:</recipe>
+The `recipes` recipe applies firewall rules based on inspecting the runlist for recipes that have node[\<recipe\>]['firewall']['rules'] attributes. These are appended to node['firewall']['rules'] and applied to the node. Cookbooks may define attributes for recipes like so:</recipe>
 
 #### attributes/default.rb for test cookbook
 
