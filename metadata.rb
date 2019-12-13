@@ -3,7 +3,6 @@ maintainer       'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license          'Apache-2.0'
 description      'Installs and configures Uncomplicated Firewall (ufw)'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '3.2.1'
 depends          'firewall', '>= 2.0'
 
