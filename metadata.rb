@@ -10,4 +10,4 @@ supports 'ubuntu'
 
 source_url 'https://github.com/chef-cookbooks/ufw'
 issues_url 'https://github.com/chef-cookbooks/ufw/issues'
-chef_version '>= 12.4' if respond_to?(:chef_version)
+chef_version '>= 12.15'
