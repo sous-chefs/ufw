@@ -1,6 +1,11 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## Unreleased
+
+- resolved cookstyle error: recipes/default.rb:36:15 convention: `Style/HashEachMethods`
+- resolved cookstyle error: recipes/default.rb:44:7 convention: `Style/HashEachMethods`
+
 ## 3.2.1 (2018-10-04)
 
 - Update README.md formatting
