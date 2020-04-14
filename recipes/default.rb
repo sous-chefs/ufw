@@ -33,7 +33,7 @@ end
 rules = {}
 if node['firewall']['rules'].is_a?(Array)
   node['firewall']['rules'].each do |rule_mash|
-    rule_mash.keys.each do |rule|
+    rule_mash.each_key do |rule|
       rules[rule] = rule_mash[rule]
     end
   end
@@ -41,7 +41,7 @@ elsif node['firewall']['rules'].is_a?(Hash)
   rules = node['firewall']['rules']
 end
 
-rules.keys.each do |rule|
+rules.each_key do |rule|
   Chef::Log.debug "ufw:rule:name \"#{rule}\""
   params = rules[rule]
   Chef::Log.debug "ufw:rule:parameters \"#{params}\""
