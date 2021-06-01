@@ -3,7 +3,7 @@ maintainer       'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license          'Apache-2.0'
 description      'Installs and configures Uncomplicated Firewall (ufw)'
-version          '3.2.1'
+version          '3.2.2'
 depends          'firewall', '>= 2.0'
 
 supports 'ubuntu'
