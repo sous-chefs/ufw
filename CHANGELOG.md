@@ -3,6 +3,8 @@ This file is used to list changes made in each version of the ufw cookbook.
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 3.2.2 - *2021-06-01*
 
 - resolved cookstyle error: recipes/default.rb:36:15 convention: `Style/HashEachMethods`
