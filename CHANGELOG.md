@@ -1,7 +1,7 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
-## Unreleased
+## 3.2.5 - *2023-02-15*
 
 Standardise files with files in sous-chefs/repo-management
 
