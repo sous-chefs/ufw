@@ -1,6 +1,8 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## Unreleased
+
 ## 3.2.9 - *2023-02-27*
 
 ## 3.2.8 - *2023-02-27*
