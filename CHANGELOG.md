@@ -1,6 +1,39 @@
 # ufw Cookbook CHANGELOG
 This file is used to list changes made in each version of the ufw cookbook.
 
+## Unreleased
+
+## 3.2.9 - *2023-02-27*
+
+## 3.2.8 - *2023-02-27*
+
+## 3.2.7 - *2023-02-23*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 3.2.6 - *2023-02-15*
+
+## 3.2.5 - *2023-02-15*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 3.2.4 - *2022-12-15*
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+## 3.2.3 - *2021-08-30*
+
+- Standardise files with files in sous-chefs/repo-management
+
+## 3.2.2 - *2021-06-01*
+
+- resolved cookstyle error: recipes/default.rb:36:15 convention: `Style/HashEachMethods`
+- resolved cookstyle error: recipes/default.rb:44:7 convention: `Style/HashEachMethods`
+
 ## 3.2.1 (2018-10-04)
 
 - Update README.md formatting
