@@ -1,7 +1,5 @@
 # Description
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/ufw.svg?branch=master)](http://travis-ci.org/chef-cookbooks/ufw) [![Cookbook Version](https://img.shields.io/cookbook/v/ufw.svg)](https://supermarket.chef.io/cookbooks/ufw)
-
 Configures Uncomplicated Firewall (ufw) on Ubuntu and Debian. Including the `ufw` recipe in a run list means the firewall will be enabled and will deny everything except SSH and ICMP ping by default.
 
 Rules may be added to the node by adding them to the `['firewall']['rules']` attributes in roles or on the node directly. The `firewall` cookbook has an LWRP that may be used to apply rules directly from other recipes as well. There is no need to explicitly remove rules, they are reevaluated on changes and reset. Rules are applied in the order of the run list, unless ordering is explicitly added.
@@ -15,7 +13,7 @@ Rules may be added to the node by adding them to the `['firewall']['rules']` att
 
 ### Chef
 
-- Chef 12.4+
+- Chef 15.3
 
 ### Cookbooks
 
@@ -114,7 +112,7 @@ override_attributes(
   )
 ```
 
-* default['firewall']['allow_ssh'] Opens port 22 for SSH when set to true. Default set to true.
+- default['firewall']['allow_ssh'] Opens port 22 for SSH when set to true. Default set to true.
 
 ## Data Bags
 

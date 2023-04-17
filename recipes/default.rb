@@ -61,7 +61,7 @@ rules.each_key do |rule|
   raise 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
   Chef::Log.debug "ufw:rule:action :#{act}"
   firewall_rule rule do
-    name params['name'] if params['name']
+    firewall_name params['name'] if params['name']
     protocol params['protocol'].to_sym if params['protocol']
     direction params['direction'].to_sym if params['direction']
     interface params['interface'] if params['interface']
@@ -69,7 +69,7 @@ rules.each_key do |rule|
     port params['port'].to_i if params['port']
     if params['port_range']
       ends = params['port_range'].split('..').map { |d| Integer(d) }
-      port_range ends[0]..ends[1]
+      port ends[0]..ends[1]
     end
     source params['source'] if params['source']
     destination params['destination'] if params['destination']
