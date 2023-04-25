@@ -4,10 +4,11 @@ maintainer_email 'help@sous-chefs.org'
 license          'Apache-2.0'
 description      'Installs and configures Uncomplicated Firewall (ufw)'
 version          '3.2.14'
-depends          'firewall', '>= 2.0'
 source_url       'https://github.com/sous-chefs/ufw'
 issues_url       'https://github.com/sous-chefs/ufw/issues'
+chef_version     '>= 15.3'
 
 supports 'ubuntu'
 supports 'debian'
-chef_version '>= 15.3'
+
+depends          'firewall', '>= 2.0'

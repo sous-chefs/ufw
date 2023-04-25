@@ -43,7 +43,6 @@ end
 
 rules.each_key do |rule|
   Chef::Log.debug "ufw:rule:name \"#{rule}\""
-  params = rules[rule]
   Chef::Log.debug "ufw:rule:parameters \"#{params}\""
   Chef::Log.debug "ufw:rule:name #{params['name']}" if params['name']
   Chef::Log.debug "ufw:rule:protocol #{params['protocol']}" if params['protocol']
@@ -56,10 +55,15 @@ rules.each_key do |rule|
   Chef::Log.debug "ufw:rule:destination #{params['destination']}" if params['destination']
   Chef::Log.debug "ufw:rule:dest_port #{params['dest_port']}" if params['dest_port']
   Chef::Log.debug "ufw:rule:position #{params['position']}" if params['position']
+
+  params = rules[rule]
   act = params['action']
   act ||= 'create'
+
   raise 'ufw: port_range was specified to firewall_rule without protocol' if params['port_range'] && !params['protocol']
+
   Chef::Log.debug "ufw:rule:action :#{act}"
+
   firewall_rule rule do
     firewall_name params['name'] if params['name']
     protocol params['protocol'].to_sym if params['protocol']
