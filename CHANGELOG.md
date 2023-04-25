@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the ufw cookbook.
 
-## Unreleased
+## 4.0.0 - *2023-04-25*
 
 - Finalaize Sous-Chefs adoption
 - Update workflow to 2.0.2
