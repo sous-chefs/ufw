@@ -7,12 +7,16 @@ This file is used to list changes made in each version of the ufw cookbook.
 - Finalaize Sous-Chefs adoption
 - Update workflow to 2.0.2
 - Require Chef 15.3
+- Change node.normal for node.default
+  - Chef/Correctness/NodeNormal: Do not use node.normal. Replace with default/override/force_default/force_override attribute levels. (<https://docs.chef.io/workstation/cookstyle/chef_correctness_nodenormal>)
 
 ## 3.2.14 - *2023-04-07*
 
 Standardise files with files in sous-chefs/repo-management
 
 ## 3.2.13 - *2023-04-01*
+
+Standardise files with files in sous-chefs/repo-management
 
 ## 3.2.12 - *2023-04-01*
 

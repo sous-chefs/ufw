@@ -27,14 +27,14 @@ node.expand!.recipes.each do |recipe|
   if recipe != cookbook && node[cookbook] && node[cookbook]['firewall'] && node[cookbook]['firewall']['rules']
     rules = node[cookbook]['firewall']['rules']
     Chef::Log.debug "ufw::recipes:#{cookbook}:rules #{rules}"
-    node.normal['firewall']['rules'] = node['firewall']['rules'].to_a.concat(rules) unless rules.nil?
+    node.default['firewall']['rules'] = node['firewall']['rules'].to_a.concat(rules) unless rules.nil?
   end
   # get the recipe attributes if there are any
   next unless node[recipe] && node[recipe]['firewall'] && node[recipe]['firewall']['rules']
 
   rules = node[recipe]['firewall']['rules']
   Chef::Log.debug "ufw::recipes:#{recipe}:rules #{rules}"
-  node.normal['firewall']['rules'] = node.normal['firewall']['rules'].to_a.concat(rules) unless rules.nil?
+  node.default['firewall']['rules'] = node.default['firewall']['rules'].to_a.concat(rules) unless rules.nil?
 end
 
 # now go apply the rules

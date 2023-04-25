@@ -11,4 +11,4 @@ chef_version     '>= 15.3'
 supports 'ubuntu'
 supports 'debian'
 
-depends          'firewall', '>= 2.0'
+depends 'firewall', '>= 2.0'
