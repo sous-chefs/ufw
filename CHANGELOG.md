@@ -116,13 +116,13 @@ Updating metadata to depend on firewall >= 0.9
 
 ## v0.7.0
 
-[COOK-3592] - allow source ports to be defined as a range in ufw
+- [COOK-3592] - allow source ports to be defined as a range in ufw
 
 ## v0.6.4
 
 ### Bug
 
-- **[COOK-3316](https://tickets.chef.io/browse/COOK-3316)** - Fix README.md example
+- [COOK-3316] - Fix README.md example
 
 ## v0.6.2
 
