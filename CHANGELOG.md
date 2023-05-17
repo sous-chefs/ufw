@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of the ufw cookbook.
 
+## Unreleased
+
 ## 4.0.1 - *2023-05-17*
 
 ## 4.0.0 - *2023-04-25*
