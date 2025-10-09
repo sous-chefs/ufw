@@ -29,7 +29,7 @@ def run_list_names(run_list)
       names.push(entry.name)
     end
     if entry.role?
-      rol = search(:role, "name:#{entry.name}")[0]
+      rol = search(:role, "name:#{entry.name}").first
       names.concat(run_list_names(rol.run_list))
     end
   end
