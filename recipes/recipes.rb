@@ -22,7 +22,7 @@
 # append them to the node['firewall']['rules'] array attribute
 node.expand!.recipes.each do |recipe|
   Chef::Log.debug "ufw::recipes: #{recipe}"
-  cookbook = recipe.split('::')[0]
+  cookbook = recipe.split('::').first
   # get the cookbook attributes if there are any
   if recipe != cookbook && node[cookbook] && node[cookbook]['firewall'] && node[cookbook]['firewall']['rules']
     rules = node[cookbook]['firewall']['rules']
