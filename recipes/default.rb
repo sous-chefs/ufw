@@ -73,7 +73,7 @@ rules.each_key do |rule|
     port params['port'].to_i if params['port']
     if params['port_range']
       ends = params['port_range'].split('..').map { |d| Integer(d) }
-      port ends[0]..ends[1]
+      port ends.first..ends[1]
     end
     source params['source'] if params['source']
     destination params['destination'] if params['destination']
