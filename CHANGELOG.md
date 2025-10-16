@@ -5,6 +5,13 @@ This file is used to list changes made in each version of the ufw cookbook.
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [4.0.10](https://github.com/sous-chefs/ufw/compare/4.0.9...v4.0.10) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#91](https://github.com/sous-chefs/ufw/issues/91)) ([642ba21](https://github.com/sous-chefs/ufw/commit/642ba21d05c2bae226b564964c91baef4de9fb4d))
+
 ## 4.0.8 - *2024-11-18*
 
 Standardise files with files in sous-chefs/repo-management
