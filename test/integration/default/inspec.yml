@@ -1,0 +1,7 @@
+---
+name: default
+title: Default Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Integration tests for the ufw cookbook default suite
+version: 1.0.0
