@@ -51,7 +51,7 @@ module UfwCookbook
         item = data_bag_item(data_bag_name, entry)
         rules.merge!(normalized_rules(item['rules']))
       end
-    rescue Net::HTTPServerException
+    rescue Net::HTTPClientException
       {}
     end
 

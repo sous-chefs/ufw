@@ -34,8 +34,8 @@ custom repository.
 
 ### Build Dependencies
 
-| Platform Family | Packages |
-|-----------------|----------|
+| Platform Family | Packages                       |
+| --------------- | ------------------------------ |
 | Debian          | None for normal cookbook usage |
 
 `ufw` is packaged as a distro-managed userspace tool and does not require a compiled-from-source
