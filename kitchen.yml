@@ -1,25 +1,36 @@
+---
 driver:
-  name: vagrant
+  name: dokken
+  privileged: true
+  chef_image: chef/chefworkstation
+  chef_version: current
+
+transport:
+  name: dokken
 
 provisioner:
-  name: chef_infra
-  product_name: chef
-  # enforce_idempotency: true #fails on the firewall_rule resource
-  # multiple_converge: 2
-  deprecations_as_errors: true
+  name: dokken
 
 verifier:
   name: inspec
+  sudo: true
 
 platforms:
-  - debian-10
-  - debian-11
-  - debian-12
-  - ubuntu-1804
-  - ubuntu-2004
-  - ubuntu-2204
+  - name: debian-12
+  - name: debian-13
+  - name: ubuntu-22.04
+  - name: ubuntu-24.04
+
+x-run_lists:
+  default: &default_run_list
+    - recipe[test::default]
+
+x-verifiers:
+  default: &default_verifier
+    inspec_tests:
+      - path: test/integration/default
 
 suites:
   - name: default
-    run_list:
-      - recipe[ufw::default]
+    run_list: *default_run_list
+    verifier: *default_verifier
