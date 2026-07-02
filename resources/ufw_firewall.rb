@@ -43,8 +43,8 @@ action_class do
 
   def desired_rules_file(rule_resources)
     build_rule_file(
-      rule_resources.each_with_object({}) do |rule_resource, rules|
-        rules[build_rule(rule_resource)] = rule_resource.position
+      rule_resources.to_h do |rule_resource|
+        [build_rule(rule_resource), rule_resource.position]
       end
     )
   end
