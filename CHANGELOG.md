@@ -2,8 +2,21 @@
 
 This file is used to list changes made in each version of the ufw cookbook.
 
-Standardise files with files in sous-chefs/repo-management
-Standardise files with files in sous-chefs/repo-management
+## [5.0.0](https://github.com/sous-chefs/ufw/compare/v4.0.10...v5.0.0) (2026-08-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate ufw to custom resources ([#95](https://github.com/sous-chefs/ufw/issues/95))
+
+### Features
+
+* migrate ufw to custom resources ([#95](https://github.com/sous-chefs/ufw/issues/95)) ([0bd06b8](https://github.com/sous-chefs/ufw/commit/0bd06b88b6fecdaa8b4d8ed97c045a215946e143))
+
+
+### Bug Fixes
+
+* migrate to Policyfile ([#102](https://github.com/sous-chefs/ufw/issues/102)) ([5f1b483](https://github.com/sous-chefs/ufw/commit/5f1b4834b9847fef72225e956409715c6db36519))
 
 ## [4.0.10](https://github.com/sous-chefs/ufw/compare/4.0.9...v4.0.10) (2025-10-16)
 
